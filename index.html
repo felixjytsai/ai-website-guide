@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 協作實戰手冊：10天打造全功能企業官網</title>
+    <meta name="description" content="透過 AI 協作，以不到 10% 的傳統成本快速建立專業企業網站。完整實戰流程分享，讓您成為優秀的 AI 指揮家。">
+    <meta name="author" content="Felix Tsai">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI 協作實戰手冊：10天打造全功能企業官網">
+    <meta property="og:description" content="透過 AI 協作，以不到 10% 的傳統成本快速建立專業企業網站">
+    <meta property="og:url" content="">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="AI 協作實戰手冊：10天打造全功能企業官網">
+    <meta property="twitter:description" content="透過 AI 協作，以不到 10% 的傳統成本快速建立專業企業網站">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .cost-highlight {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .content {
+            padding: 3rem 2rem;
+        }
+        
+        .step {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #003366;
+        }
+        
+        .step h2 {
+            color: #003366;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .step-number {
+            background: #003366;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: 600;
+        }
+        
+        .step h3 {
+            color: #0066cc;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .feature-card h4 {
+            color: #003366;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .prompt-box {
+            background: #f1f3f4;
+            border: 1px solid #dadce0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .prompt-box h4 {
+            color: #003366;
+            margin-bottom: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .warning::before {
+            content: "⚠️ ";
+            font-size: 1.2rem;
+        }
+        
+        .tip {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .tip::before {
+            content: "💡 ";
+            font-size: 1.2rem;
+        }
+        
+        .author-section {
+            background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .author-section h2 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.8rem;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .social-links a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #003366;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: #0066cc;
+            transform: translateY(-3px);
+        }
+        
+        ol, ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .workflow-steps {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .workflow-steps ol {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .workflow-steps ol li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .workflow-steps ol li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #003366;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                border-radius: 15px;
+            }
+            
+            .hero {
+                padding: 2rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 2rem 1rem;
+            }
+            
+            .step {
+                padding: 1.5rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>AI 協作實戰手冊</h1>
+            <div class="subtitle">10天打造全功能企業官網</div>
+            <div class="cost-highlight">
+                <i class="fas fa-chart-line"></i> 以不到 10% 的傳統成本快速建站
+            </div>
+        </div>
+        
+        <div class="content">
+            <section class="step">
+                <h2>前言：一場網站建置的典範轉移</h2>
+                <p>傳統上，建立一個功能完整的企業網站，意味著數十萬的預算、數個月的工時，以及與設計師、工程師之間漫長的溝通。這個時代已經過去了。</p>
+                
+                <p>本手冊將帶您體驗一場革命性的網站建置流程。我結合世界上最多人使用的網站系統 (WordPress) 與 Gemini/Claude，<span class="highlight">以不到 10% 的傳統成本</span>，從零開始，親手打造一個專業、美觀且具備高度擴充性的多頁式企業官方網站。</p>
+                
+                <div class="tip">
+                    您不需要任何程式或設計背景，只需要了解你的產品USP和跟隨我的步驟，學會如何成為一名優秀的「AI 指揮家」，將您的商業構想，轉化為真實的網站。
+                </div>
+            </section>
+
+            <section class="step">
+                <h2><span class="step-number">1</span>奠定數位基石（網站架構規劃）</h2>
+                <p>在召喚 AI 大顯身手之前，我們需要為網站準備一個堅固且靈活的基礎。這套組合是我測試過，最適合與 AI 協作的黃金架構。</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4><i class="fab fa-wordpress"></i> WordPress</h4>
+                        <p>內容管理系統，網站的大腦與骨架。全球超過 40% 的網站都使用它，擁有最豐富的生態系與擴充性。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-paint-brush"></i> Astra 主題</h4>
+                        <p>輕量、快速且高度客製化的主題，決定網站的基礎外觀，如頁首、頁尾和字體風格。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-drag-and-drop"></i> Elementor</h4>
+                        <p>視覺化編輯器，您的室內設計師。用拖拉的方式安排版面，內建關鍵工具 HTML Widget。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-code"></i> HTML Widget</h4>
+                        <p>AI 的畫布，整個流程的核心。萬用的程式碼容器，將 AI 生成的精美頁面程式碼完美貼上到網站任何地方。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="step">
+                <h2><span class="step-number">2</span>AI 內容生成（從產品頁到關於我們）</h2>
+                <p>我們將透過下達精準的「指令 (Prompt)」，讓 AI 成為您的專屬網頁設計師與文案策略師。</p>
+                
+                <h3>核心工作流程</h3>
+                <div class="workflow-steps">
+                    <ol>
+                        <li><strong>確立頁面目標</strong>：明確您要建立哪個頁面。是「產品介紹頁」？「關於我們」？還是「服務項目」？</li>
+                        <li><strong>準備相關資料</strong>：搜集該頁面需要的所有資訊，例如產品型錄、產品FABV、公司簡介、服務流程圖等。</li>
+                        <li><strong>指揮 AI 生成 HTML</strong>：打開 Gemini 或 Claude，貼上我們為您準備的「萬用指令範本」，並根據您的需求修改其中的變數。</li>
+                    </ol>
+                </div>
+                
+                <h3>AI 指令 (Prompt) 範本</h3>
+                <div class="prompt-box">
+                    <h4># 角色 (Role)</h4>
+                    <p>你是一位專業的前端開發工程師與行銷內容策略師。你的任務是為XXXX產業的專業人士，打造一個具備高質感、現代化設計，且符合 SEO 規範的產品介紹網頁。</p>
+                    
+                    <h4># 目標 (Goal)</h4>
+                    <p>生成一份單一、完整的 HTML 程式碼檔案，用於展示「A 產品」。這份程式碼將嵌入 WordPress 網站的 Elementor HTML 模組中，因此需確保所有 CSS 和 JavaScript 都是內聯或嵌入式，且不依賴外部檔案。</p>
+                    
+                    <h4># 輸入資料 (Input Data)</h4>
+                    <ul>
+                        <li><strong>產品名稱</strong>：A 產品</li>
+                        <li><strong>核心技術</strong>：專利XXXXX技術</li>
+                        <li><strong>目標客群 (TA)</strong>：XXXX產業的科學家、研究員與實驗室管理者</li>
+                        <li><strong>原廠網站</strong>：www.aaa.com (產品說明參考連結)</li>
+                        <li><strong>主色調 (原廠 Logo 色)</strong>：#003366 (範例：深藍色)</li>
+                        <li><strong>輔助色調 (您的 Logo 色)</strong>：#66CC99 (範例：薄荷綠)</li>
+                    </ul>
+                </div>
+                
+                <h3>任務要求重點</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>FABV + SEO 模型</h4>
+                        <p>Feature (特性)、Advantage (優勢)、Benefit (利益)、Value (價值)，搭配完整的 SEO 優化。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>完整網頁結構</h4>
+                        <p>圖片輪播區、英雄區、技術優勢比較、應用案例、行動呼籲等完整架構。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>現代化設計</h4>
+                        <p>響應式設計、Google Fonts、圓角與陰影效果，確保專業美觀。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>自包含程式碼</h4>
+                        <p>所有 CSS 和 JavaScript 內嵌，不依賴外部檔案，完美整合 Elementor。</p>
+                    </div>
+                </div>
+                
+                <div class="tip">
+                    這套流程可以重複使用，為您的網站打造出所有必要的核心頁面：首頁、關於我們、產品服務、解決方案、最新消息等。
+                </div>
+            </section>
+
+            <section class="step">
+                <h2><span class="step-number">3</span>注入靈魂（將 AI 內容部署至網站）</h2>
+                <p>現在，要把你和 AI 設計的頁面，安裝到網站的基礎架構中。</p>
+                
+                <div class="workflow-steps">
+                    <ol>
+                        <li><strong>建立新頁面</strong>：在 WordPress 後台，點擊「頁面」→「新增頁面」。為頁面命名並設定簡潔的英文 Slug。</li>
+                        <li><strong>啟動 Elementor</strong>：點擊藍色的「使用 Elementor 編輯」按鈕。</li>
+                        <li><strong>拖入 HTML Widget</strong>：在左側工具欄找到「HTML」小工具，將它拖曳到右側的編輯區。</li>
+                        <li><strong>貼上程式碼</strong>：將從 AI 複製的整段 HTML 程式碼，貼入「HTML Code」輸入框中。</li>
+                        <li><strong>預覽成果</strong>：檢查超連結、圖片、影片、輪播等是否正常顯示，並測試RWD效果。</li>
+                        <li><strong>點擊發布</strong>：確認無誤後發布頁面。</li>
+                    </ol>
+                </div>
+                
+                <div class="warning">
+                    請為您規劃的每一個頁面，重複執行一次第三步。
+                </div>
+            </section>
+
+            <section class="step">
+                <h2><span class="step-number">4</span>結構化與導航（建立網站選單與頁尾）</h2>
+                <p>當您建立好多個獨立頁面後，我們需要用「選單 (Menu)」將它們串連起來，讓使用者可以方便地在網站中穿梭。</p>
+                
+                <div class="workflow-steps">
+                    <ol>
+                        <li><strong>進入選單設定</strong>：在 WordPress 後台，點擊「外觀」→「選單」。</li>
+                        <li><strong>新增頁面至選單</strong>：在左側勾選您建立的所有頁面，點擊「新增至選單」。</li>
+                        <li><strong>拖曳排序</strong>：用滑鼠拖曳決定主選單的順序，可設定下拉子選單項目。</li>
+                        <li><strong>設定頁尾資訊</strong>：透過「外觀」→「自訂」→「頁尾建構器」，修改版權聲明、公司地址和聯絡方式。</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section class="step">
+                <h2><span class="step-number">5</span>打造動態內容中心（進階功能）</h2>
+                <p>一個優秀的企業網站不只有靜態頁面，還需要一個能持續發布內容的地方，例如「部落格」或「技術文獻庫」。這能有效提升您在搜尋引擎的排名 (SEO)。</p>
+                
+                <h3>動態篩選功能的實現原理</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4><i class="fas fa-database"></i> Custom Post Type UI</h4>
+                        <p>建立獨立的「技術文獻」內容類型，附加品牌、產品儀器、應用領域等分類法。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-code-branch"></i> Code Snippets</h4>
+                        <p>執行客製化程式碼，生成篩選器按鈕和文章卡片列表的短代碼功能。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-cogs"></i> 自動化流程</h4>
+                        <p>建立完成後，只需新增文章和設定分類，前台列表會自動更新。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-paint-roller"></i> 統一樣式</h4>
+                        <p>透過「附加的 CSS」統一控制所有按鈕和卡片的美觀樣式。</p>
+                    </div>
+                </div>
+                
+                <div class="tip">
+                    這是一個一勞永逸的自動化流程，無需再動用 AI 或 Elementor 進行日常維護。
+                </div>
+            </section>
+
+            <section class="step">
+                <h2><span class="step-number">6</span>建立互動的橋樑（聯絡表單與地圖）</h2>
+                <p>最後，我們需要為網站建立一個讓潛在客戶能夠聯繫您的管道。</p>
+                
+                <div class="workflow-steps">
+                    <ol>
+                        <li><strong>建立聯絡我們頁面</strong>：重複第二步與第三步，請 AI 生成包含聯絡資訊、營業時間的頁面版面。</li>
+                        <li><strong>安裝表單外掛</strong>：安裝 Contact Form 7 外掛，建立所需的表單欄位（姓名、公司、電話、需求內容）。</li>
+                        <li><strong>嵌入表單與地圖</strong>：將 Contact Form 7 的短代碼貼到頁面左側，Google Maps 的嵌入程式碼貼到右側。</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section class="step">
+                <h2><span class="step-number">✓</span>網站發佈前的最終檢查</h2>
+                <p>恭喜您！至此，您已經完成了一個全功能企業網站的架構。</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4><i class="fas fa-mobile-alt"></i> 跨裝置預覽</h4>
+                        <p>在 Elementor 點擊預覽功能，確保網站在電腦、平板和手機上都完美顯示。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-link"></i> 功能測試</h4>
+                        <p>點擊每個選單連結，提交聯絡表單，確保所有功能正常運作。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-shield-alt"></i> 定期備份</h4>
+                        <p>設定網站的自動備份機制，這是最重要的保險措施。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-rocket"></i> 持續優化</h4>
+                        <p>透過這套AI協作流程，持續為品牌注入源源不絕的活力。</p>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    您已經掌握了新時代的網站建置方法。未來，無論是新增產品線、拓展服務項目，還是發布文章，都可以透過這套流程快速且低成本地實現。
+                </div>
+            </section>
+        </div>
+        
+        <div class="author-section">
+            <h2><i class="fas fa-user-circle"></i> 聯繫作者</h2>
+            <h3>Felix Tsai</h3>
+            <p><i class="fas fa-envelope"></i> felixtsaiwanna@gmail.com</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/felix-ju-yi-tsai-84b0a865/" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.threads.com/@felixjytsai" target="_blank" title="Threads">
+                    <i class="fab fa-threads"></i>
+                </a>
+                <a href="https://x.com/Felixtsaiexpert" target="_blank" title="X (Twitter)">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+    
+    <script>
+        // Back to top functionality
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        document.getElementById('backToTop').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all step sections
+        document.querySelectorAll('.step').forEach(step => {
+            step.style.opacity = '0';
+            step.style.transform = 'translateY(20px)';
+            step.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(step);
+        });
+        
+        // Add subtle parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < hero.offsetHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
